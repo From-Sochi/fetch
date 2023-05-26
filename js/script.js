@@ -16,6 +16,7 @@ const debounce = (fn, debounceTime) => {
     timeout = setTimeout(fnCall, debounceTime);
   };
 };
+
 //Запрос на получение репозиториев
 const getRepo = async (url, pageLimit, nameRepo) => {
   url.searchParams.set("q", nameRepo);
@@ -25,6 +26,7 @@ const getRepo = async (url, pageLimit, nameRepo) => {
   const data = await response.json();
   return data.items;
 };
+
 //Создаёт список найденых репозиториев
 const createItemListSearch = (repo) => {
   const li = document.createElement("li");
@@ -33,6 +35,7 @@ const createItemListSearch = (repo) => {
   li.dataset.repoId = repo.id;
   listSearchRepo.appendChild(li);
 };
+
 //Создаёт список найденых репозиториев по ключ словам
 const createListSearch = (repos) => {
   if (!repos) listSearchRepo.innerHTML = "";
@@ -40,6 +43,7 @@ const createListSearch = (repos) => {
     createItemListSearch(el);
   });
 };
+
 //Добавление найденого репозитория в список
 const addRepo = (e) => {
   if (e.target.classList.value === "auto-com__item") {
@@ -49,6 +53,7 @@ const addRepo = (e) => {
     createElementInListRepo(repo);
   }
 };
+
 //Создание карточики репозитория
 const createElementInListRepo = (repo) => {
   const repoCard = `
@@ -68,13 +73,14 @@ const createElementInListRepo = (repo) => {
 			</button>
 		</div>
 	`;
-
   listRepo.insertAdjacentHTML('afterbegin', repoCard);
 };
+
 //Удаление добавленного репозитория
 const deleteRepo = (e) => {
   e.target.closest("div").remove();
 }
+
 //Поиск репозитория
 function search(e) {
   if (e.target.value.trim()) {

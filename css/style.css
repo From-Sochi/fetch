@@ -17,7 +17,7 @@ body {
 }
 
 
-.box {
+.wrap {
   min-height: 700px;
   margin: 10%;
   padding: 63px 85px;
@@ -28,7 +28,7 @@ body {
   justify-content: space-between;
 }
 
-.search-box {
+.search-wrap {
   position: relative;
 }
 
